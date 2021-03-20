@@ -2,6 +2,21 @@ import React, { useEffect, useState } from "react";
 import useMoneda from "../hooks/useMoneda";
 import useCriptomoneda from "../hooks/useCriptomoneda";
 import axios from "axios";
+import styled from "@emotion/styled";
+
+const Boton = styled.button`
+  width: 100%;
+  padding: 0.8rem;
+  margin-top: 2rem;
+  border-radius: 10px;
+  border: 2px solid;
+  font-family: "Chakra Petch", sans-serif;
+  color: white;
+  font-size: 1.4rem;
+  @media (max-width: 992px) {
+    margin-bottom: 30px;
+  }
+`;
 
 const Formulario = () => {
   // inicializo las monedas a convertir
@@ -27,7 +42,6 @@ const Formulario = () => {
         "https://min-api.cryptocompare.com/data/top/mktcapfull?limit=10&tsym=USD";
       const respuesta = await axios.get(url);
       setlistadoCripto(respuesta.data.Data);
-      console.log(respuesta.data.Data);
     };
     consultarAPI();
   }, []);
@@ -37,6 +51,9 @@ const Formulario = () => {
       <form>
         <SeleccionarMoneda />
         <SeleccionarCriptomoneda />
+        <Boton type="submit" className="btn btn-outline-primary">
+          Cotizar Criptomoneda
+        </Boton>
       </form>
     </div>
   );

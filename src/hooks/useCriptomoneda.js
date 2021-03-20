@@ -14,36 +14,29 @@ const Select = styled.select`
   border-radius: 8px;
   width: 100%auto;
 `;
-const Contenedor = styled.div`
-  @media (max-width: 992px) {
-    margin-bottom: 40px;
-  }
-`;
 
 const useCriptomoneda = (stateInicial, opciones) => {
   const [state, setState] = useState(stateInicial);
 
   const SeleccionarCriptomoneda = () => (
     <Fragment>
-      <Contenedor>
-        <Label>Seleccione su Criptomoneda</Label>
-        <div className="form-floating">
-          <Select
-            className="form-select"
-            value={state}
-            aria-label="Criptomoneda"
-            onChange={(e) => setState(e.target.value)}
-          >
-            <option value="">Seleccione una opcion</option>
-            {opciones.map((opcion) => (
-              <option key={opcion.CoinInfo.Id} value={opcion.CoinInfo.Name}>
-                {opcion.CoinInfo.FullName}
-              </option>
-            ))}
-          </Select>
-          <label htmlFor="floatingSelect">Criptomoneda</label>
-        </div>
-      </Contenedor>
+      <Label>Seleccione su Criptomoneda</Label>
+      <div className="form-floating">
+        <Select
+          className="form-select"
+          value={state}
+          aria-label="Criptomoneda"
+          onChange={(e) => setState(e.target.value)}
+        >
+          <option value="">Seleccione una opcion</option>
+          {opciones.map((opcion) => (
+            <option key={opcion.CoinInfo.Id} value={opcion.CoinInfo.Name}>
+              {opcion.CoinInfo.FullName}
+            </option>
+          ))}
+        </Select>
+        <label htmlFor="floatingSelect">Criptomoneda</label>
+      </div>
     </Fragment>
   );
 
