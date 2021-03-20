@@ -1,0 +1,16 @@
+@import url("https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@1,300&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    3deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(1, 0, 89, 1) 15%,
+    rgba(0, 0, 219, 0.7763480392156863) 52%,
+    rgba(93, 97, 163, 1) 92%,
+    rgba(129, 129, 162, 1) 100%
+  );
+}
