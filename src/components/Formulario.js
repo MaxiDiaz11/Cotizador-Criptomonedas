@@ -3,6 +3,7 @@ import useMoneda from "../hooks/useMoneda";
 import useCriptomoneda from "../hooks/useCriptomoneda";
 import axios from "axios";
 import styled from "@emotion/styled";
+import Error from "./Error";
 
 const Boton = styled.button`
   width: 100%;
@@ -35,6 +36,9 @@ const Formulario = () => {
   //   utilizo useCriptomoneda
   const [cripto, SeleccionarCriptomoneda] = useCriptomoneda("", listadoCripto);
 
+  //state error
+  const [error, setError] = useState(false);
+
   //   llamado a la API
   useEffect(() => {
     const consultarAPI = async () => {
@@ -46,9 +50,19 @@ const Formulario = () => {
     consultarAPI();
   }, []);
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (moneda.trim() === "" || cripto.trim() === "") {
+      setError(true);
+      return;
+    }
+    setError(false);
+  };
+
   return (
     <div className="container">
-      <form>
+      <form onSubmit={handleSubmit}>
+        {error ? <Error mensaje="Los campos no pueden estar vacios" /> : null}
         <SeleccionarMoneda />
         <SeleccionarCriptomoneda />
         <Boton type="submit" className="btn btn-outline-primary">
