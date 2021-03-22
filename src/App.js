@@ -49,7 +49,7 @@ function App() {
         </div>
         <div className="col col-sm-12 col-md-6 col-lg-6">
           <Formulario setMoneda={setMoneda} setCriptoMoneda={setCriptoMoneda} />
-          ({cargando ? <Spinner /> : <Cotizacion respuesta={respuesta} />} )
+          {cargando ? <Spinner /> : <Cotizacion respuesta={respuesta} />}
         </div>
       </div>
     </div>

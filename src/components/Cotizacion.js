@@ -21,7 +21,6 @@ const Contenedor = styled.div`
 
 const Cotizacion = ({ respuesta }) => {
   if (Object.keys(respuesta).length === 0) return null;
-  console.log(respuesta)
 
   return (
     <Contenedor className="container">
