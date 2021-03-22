@@ -15,11 +15,11 @@ const Boton = styled.button`
   color: white;
   font-size: 1.4rem;
   @media (max-width: 992px) {
-    margin-bottom: 30px;
+    margin-bottom: 15px;
   }
 `;
 
-const Formulario = () => {
+const Formulario = ({ setMoneda, setCriptoMoneda }) => {
   // inicializo las monedas a convertir
   const MONEDAS = [
     { codigo: "USD", nombre: "Dolar de EEUU" },
@@ -57,6 +57,8 @@ const Formulario = () => {
       return;
     }
     setError(false);
+    setMoneda(moneda);
+    setCriptoMoneda(cripto);
   };
 
   return (
