@@ -6,6 +6,7 @@ import styled from "@emotion/styled";
 import Formulario from "./components/Formulario";
 import Cotizacion from "./components/Cotizacion";
 import axios from "axios";
+import Spinner from "./components/Spinner";
 
 const Imagen = styled.img`
   height: 500px;
@@ -21,13 +22,18 @@ function App() {
   const [moneda, setMoneda] = useState("");
   const [criptomoneda, setCriptoMoneda] = useState("");
   const [respuesta, setRespuesta] = useState({});
+  const [cargando, setCargando] = useState(false);
 
   useEffect(() => {
     const llamadaAPI = async () => {
       if (moneda !== "" && criptomoneda !== "") {
         const url = `https://min-api.cryptocompare.com/data/pricemultifull?fsyms=BTC&tsyms=${moneda},${criptomoneda}`;
         const respuesta = await axios.get(url);
-        setRespuesta(respuesta.data.DISPLAY[criptomoneda][moneda]);
+        setCargando(true);
+        setTimeout(() => {
+          setCargando(false);
+          setRespuesta(respuesta.data.DISPLAY[criptomoneda][moneda]);
+        }, 3000);
       }
     };
     llamadaAPI();
@@ -43,7 +49,7 @@ function App() {
         </div>
         <div className="col col-sm-12 col-md-6 col-lg-6">
           <Formulario setMoneda={setMoneda} setCriptoMoneda={setCriptoMoneda} />
-          <Cotizacion respuesta={respuesta} />
+          ({cargando ? <Spinner /> : <Cotizacion respuesta={respuesta} />} )
         </div>
       </div>
     </div>
