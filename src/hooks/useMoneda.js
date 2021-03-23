@@ -1,5 +1,6 @@
 import React, { Fragment, useState } from "react";
 import styled from "@emotion/styled";
+import PropTypes from "prop-types";
 
 const Label = styled.label`
   padding: 1rem;
@@ -39,6 +40,11 @@ const useMoneda = (stateInicial, opciones) => {
     </Fragment>
   );
   return [state, SeleccionarMoneda, setState];
+};
+
+useMoneda.propTypes = {
+  stateInicial: PropTypes.string.isRequired,
+  opciones: PropTypes.array.isRequired,
 };
 
 export default useMoneda;

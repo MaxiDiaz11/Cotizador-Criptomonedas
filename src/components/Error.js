@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
+import PropTypes from "prop-types";
 
 const Contenedor = styled.div`
   background-color: red;
@@ -22,6 +23,10 @@ const Error = ({ mensaje }) => {
       <Parrafo className="lead">{mensaje}</Parrafo>
     </Contenedor>
   );
+};
+
+Error.propTypes = {
+  mensaje: PropTypes.string.isRequired,
 };
 
 export default Error;

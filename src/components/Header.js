@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
+import PropTypes from "prop-types";
 
 const Titulo = styled.h1`
   font-size: 60px;
@@ -14,6 +15,10 @@ const Titulo = styled.h1`
 
 const Header = ({ mensaje }) => {
   return <Titulo>{mensaje}</Titulo>;
+};
+
+Header.propTypes = {
+  mensaje: PropTypes.string.isRequired,
 };
 
 export default Header;

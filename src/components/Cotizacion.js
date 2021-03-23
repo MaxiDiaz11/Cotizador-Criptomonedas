@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
+import PropTypes from "prop-types";
 
 const Contenedor = styled.div`
   background-color: #fff;
@@ -30,6 +31,10 @@ const Cotizacion = ({ respuesta }) => {
       <p>Variacion ultimas 24hs: {respuesta.CHANGEPCT24HOUR}</p>
     </Contenedor>
   );
+};
+
+Cotizacion.propTypes = {
+  respuesta: PropTypes.object.isRequired,
 };
 
 export default Cotizacion;
